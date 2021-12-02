@@ -1,6 +1,9 @@
 from tkinter import Tk, Label, Entry, Button, IntVar, Checkbutton, END
 
 import matplotlib
+
+from myAction.ch09_RegressionTree.study import predict, modelTree
+
 matplotlib.use('TKAgg')
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -8,7 +11,7 @@ from matplotlib.figure import Figure
 
 from numpy import mat, arange
 
-from MLiA_modifing.Ch09 import regTrees
+import myRegTrees as regTrees
 
 
 def reDraw(tolS,tolN):
@@ -16,13 +19,13 @@ def reDraw(tolS,tolN):
     reDraw.a=reDraw.f.add_subplot(111)
     if chkBtnVar.get():
         if tolN<2:tolN=2
-        myTree=regTrees.createTree(reDraw.rawDat,regTrees.modelLeaf,
-                                   regTrees.modelErr,(tolS,tolN))
-        yHat=regTrees.createForeCast(myTree,reDraw.testDat,
-                                     regTrees.modelTreeEval)
+        myTree=regTrees.createTree(reDraw.rawDat,modelTree.modelLeaf,
+                                   modelTree.modelErr,(tolS,tolN))
+        yHat=predict.createForeCast(myTree,reDraw.testDat,
+                                     predict.modelTreeEval)
     else:
         myTree=regTrees.createTree(reDraw.rawDat,ops=(tolS,tolN))
-        yHat=regTrees.createForeCast(myTree,reDraw.testDat)
+        yHat=predict.createForeCast(myTree,reDraw.testDat)
     reDraw.a.scatter(reDraw.rawDat[:,0].tolist(),reDraw.rawDat[:,1].tolist(),s=5)
     reDraw.a.plot(reDraw.testDat,yHat,lineWidth=2.0)
     reDraw.canvas.draw()
@@ -74,7 +77,7 @@ chkBtn=Checkbutton(root,text="Model Tree",variable=chkBtnVar)
 chkBtn.grid(row=3,column=0,columnspan=2)
 
 # 初始化一些与reDraw相关联的全局变量
-reDraw.rawDat=mat(regTrees.loadDataSet('sine.txt'))
+reDraw.rawDat=mat(regTrees.loadDataSet('../dataset/sine.txt'))
 reDraw.testDat=arange(min(reDraw.rawDat[:,0]),max(reDraw.rawDat[:,0]),0.01)
 # reDraw(1.0,10)
 drawNewTree()
