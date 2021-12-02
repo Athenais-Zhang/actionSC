@@ -26,7 +26,7 @@ class treeNode:
         for child in self.children.values():
             child.disp(ind+1)
 
-def createTree(dataSet, minSup=1): #create FP-tree from dataset but don't mine
+def createTree(dataSet, minSup=1): #create FP-tree from 00_dataset but don't mine
     headerTable = {}
     #go over dataSet twice
     for trans in dataSet:#first pass counts frequency of occurance
@@ -42,7 +42,7 @@ def createTree(dataSet, minSup=1): #create FP-tree from dataset but don't mine
         headerTable[k] = [headerTable[k], None] #reformat headerTable to use Node link 
     #print 'headerTable: ',headerTable
     retTree = treeNode('Null Set', 1, None) #create tree
-    for tranSet, count in dataSet.items():  #go through dataset 2nd time
+    for tranSet, count in dataSet.items():  #go through 00_dataset 2nd time
         localD = {}
         for item in tranSet:  #put transaction items in order
             if item in freqItemSet:

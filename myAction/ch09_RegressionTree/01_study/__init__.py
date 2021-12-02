@@ -14,7 +14,7 @@ import myRegTrees as mrt
 # tks.studyTkinter()
 # tks.createCanvas()
 
-myDat=mrt.loadDataSet('../dataset/ex00.txt')
+myDat=mrt.loadDataSet('../00_dataset/ex00.txt')
 myMat=mat(myDat)
 # print(myMat)
 # print(shape(myMat))

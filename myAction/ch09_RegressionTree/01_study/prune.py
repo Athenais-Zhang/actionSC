@@ -1,7 +1,7 @@
 from numpy import power
 from numpy.core import shape
 
-from myAction.ch09_RegressionTree.study.myRegTrees import binSplitDataSet
+from myRegTrees import binSplitDataSet
 
 
 def isTree(obj):
