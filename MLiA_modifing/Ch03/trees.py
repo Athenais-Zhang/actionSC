@@ -6,7 +6,7 @@ Decision Tree Source Code for Machine Learning in Action Ch. 3
 from math import log
 import operator
 
-from machinelearninginaction.Ch03.treePlotter import createPlot
+from MLiA_modifing.Ch03.treePlotter import createPlot
 
 
 def createDataSet():
